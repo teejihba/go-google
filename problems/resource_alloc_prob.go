@@ -1,7 +1,7 @@
 package problems
 
 import (
-	"go-google/utils"
+	"go-google/utils/linkedlist"
 	"reflect"
 	"sort"
 )
@@ -12,19 +12,19 @@ type Process struct {
 	Required int
 }
 
-func (p Process) InitNode() *utils.SinglyLinkedListNode {
-	node := &utils.SinglyLinkedListNode{Data: p, Next:nil}
+func (p Process) InitNode() *linkedlist.SinglyLinkedListNode {
+	node := &linkedlist.SinglyLinkedListNode{Data: p, Next:nil}
 	return node
 }
 
-func (p Process) GetData() utils.LinkedListNodeInterface {
+func (p Process) GetData() linkedlist.SinglyLinkedListNodeInterface {
 	return p
 }
 
 func FindMaxAvailableResources(n int, processes []string, allocatedArr []int, requiredArr []int, available int, k int ) int{
 	list := sortProcArrayAndInitLinkedList(n, processes, allocatedArr, requiredArr)
 	curr := list.Head
-	var prev *utils.SinglyLinkedListNode = nil
+	var prev *linkedlist.SinglyLinkedListNode = nil
 	for !list.IsListEmpty() &&  k > 0 && curr != nil {
 		var p = curr.Data.GetData().(Process)
 		if p.Required <= available{
@@ -46,12 +46,12 @@ func FindMaxAvailableResources(n int, processes []string, allocatedArr []int, re
 
 }
 
-func sortProcArrayAndInitLinkedList(n int, procs []string, alloc []int, reqd []int) *utils.SinglyLinkedList {
+func sortProcArrayAndInitLinkedList(n int, procs []string, alloc []int, reqd []int) *linkedlist.SinglyLinkedList {
 	procArr := initProcArr(n, procs, alloc, reqd)
 	sort.SliceStable(procArr, func(i, j int) bool {
 		return procArr[i].Allocated > procArr[j].Allocated
 	})
-	list := utils.InitSinglyLinkedList(reflect.TypeOf(Process{}))
+	list := linkedlist.InitSinglyLinkedList(reflect.TypeOf(Process{}))
 	for i := 0; i < n; i++ {
 		node := procArr[i].InitNode()
 		_ = list.InsertAtEnd(node)

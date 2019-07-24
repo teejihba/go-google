@@ -1,4 +1,4 @@
-package utils
+package linkedlist
 
 import (
 	"errors"
@@ -6,18 +6,17 @@ import (
 	"reflect"
 )
 /*
-To create a linked list of generic type , create a struct that implements LinkedListNodeInterface
+To create a linked list of generic type , create a struct that implements SinglyLinkedListNodeInterface
 Checkout example in singly_linked_list.go
 */
 
-type LinkedListNodeInterface interface {
+type SinglyLinkedListNodeInterface interface {
 	InitNode() *SinglyLinkedListNode
-	GetData() LinkedListNodeInterface
-	//PrintHello()
+	GetData() SinglyLinkedListNodeInterface
 }
 
 type SinglyLinkedListNode struct{
-	Data LinkedListNodeInterface
+	Data SinglyLinkedListNodeInterface
 	Next *SinglyLinkedListNode
 }
 
