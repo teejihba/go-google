@@ -1,7 +1,6 @@
-package main
+package problems
 
 import (
-	"fmt"
 	"go-google/utils"
 	"reflect"
 	"sort"
@@ -22,15 +21,7 @@ func (p Process) GetData() utils.LinkedListNodeInterface {
 	return p
 }
 
-func main(){
-	//////problem input////////
-	n := 4
-	processes := [] string {"p1","p2", "p3","p4"}
-	allocatedArr := [] int {1,2,3,4}
-	requiredArr := [] int {5,2,1,5}
-	available := 1
-	k := 2
-	///////////////////////////
+func FindMaxAvailableResources(n int, processes []string, allocatedArr []int, requiredArr []int, available int, k int ) int{
 	list := sortProcArrayAndInitLinkedList(n, processes, allocatedArr, requiredArr)
 	curr := list.Head
 	var prev *utils.SinglyLinkedListNode = nil
@@ -48,9 +39,9 @@ func main(){
 		}
 	}
 	if curr == nil && k>0 {
-		fmt.Println("Cannot complete k process")
+		return -1
 	} else {
-		fmt.Println("Answer = ", available)
+		return available
 	}
 
 }
