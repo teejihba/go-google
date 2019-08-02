@@ -1,7 +1,7 @@
 package problems
 
 import (
-	"go-google/utils/linkedlist"
+	"go-google/utils/datastructures/linkedlist"
 	"reflect"
 	"sort"
 )

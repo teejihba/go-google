@@ -1,4 +1,4 @@
-package utils
+package math
 
 import "math"
 
@@ -15,7 +15,7 @@ func Min(i1 int, i2 int) int {
 	return i1
 }
 
-func MinVarArg(nums ...int) int {
+func VariadicMin(nums ...int) int {
 	min := math.MaxInt64
 	for _, num := range nums {
 		min = Min(min, num)
@@ -23,7 +23,7 @@ func MinVarArg(nums ...int) int {
 	return min
 }
 
-func MaxVarArg(nums ...int) int {
+func VariadicMax(nums ...int) int {
 	max := math.MinInt64
 	for _, num := range nums {
 		max = Max(max, num)
