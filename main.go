@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
+	"go-google/problems"
 	. "go-google/utils/datastructures/tree"
-	"go-google/utils/math"
 )
 type TestClass struct {
 	val int
@@ -32,12 +32,17 @@ func main(){
 	//input := problems.Input{arr, len(arr), 0}
 	//fmt.Println("Answer : ", input.FindIfExists(-7), ", size of arr = ", len(arr))
 	//fmt.Println("GetValue method call count : ", input.GetCount)
-	i1, e := math.InitBigInt("90")
-	if e != nil{
-		fmt.Println("err = ", e)
-	}
-	i2, _ := math.InitBigInt("4")
-	sum, _ := i1.Add(i2)
-	fmt.Println(i1,i2,sum)
+	//i1, e := math.InitBigInt("90")
+	//if e != nil{
+	//	fmt.Println("err = ", e)
+	//}
+	//i2, _ := math.InitBigInt("4")
+	//sum, _ := i1.Add(i2)
+	//fmt.Println(i1,i2,sum)
+	words := []string{"area","lead","wall","lady","ball"}
+	//words := []string{"abat","baba","atan","atal"}
+	ans := problems.GetWordSquare(words)
+	fmt.Println(ans)
+
 
 }
