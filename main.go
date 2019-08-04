@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"go-google/problems"
 	. "go-google/utils/datastructures/tree"
+	quadtree "go-google/utils/quad-tree"
 )
 type TestClass struct {
 	val int
@@ -40,9 +40,21 @@ func main(){
 	//sum, _ := i1.Add(i2)
 	//fmt.Println(i1,i2,sum)
 	//words := []string{"area","lead","wall","lady","ball"}
-	str := "adsfadasd"
+	//str := "adsfadasd"
+	//
+	//i, i2 := problems.LongestSubstringWithAtmostKDisntinctChar(str, 3)
+	//fmt.Println("", i, str[i2:i2+i])
+	//[]int{9,10,11,12},[]int{13,14,15,16}
+	grid := [][]int{{1, 2, 3, 4}, {5, 6, 7, 8},{9,10,11,12}}
+	tree := quadtree.InitQuadTree(grid, 3, 4)
+	fmt.Println("Tree == ",  tree.Tree)
 
-	i, i2 := problems.LongestSubstringWithAtmostKDisntinctChar(str, 3)
-	fmt.Println("", i, str[i2:i2+i])
+	val  := tree.RangeQuery(0,1,1,2)
+	fmt.Println("Val == ",  val)
+
+	val  = tree.RangeQuery(0,1,2,3)
+	fmt.Println("Val == ",  val)
+	tree.PointUpdate(0,0, 7)
+	fmt.Println("New tree = ", tree.Tree)
 
 }
