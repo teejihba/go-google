@@ -39,10 +39,10 @@ func main(){
 	//i2, _ := math.InitBigInt("4")
 	//sum, _ := i1.Add(i2)
 	//fmt.Println(i1,i2,sum)
-	words := []string{"area","lead","wall","lady","ball"}
-	//words := []string{"abat","baba","atan","atal"}
-	ans := problems.GetWordSquare(words)
-	fmt.Println(ans)
+	//words := []string{"area","lead","wall","lady","ball"}
+	str := "adsfadasd"
 
+	i, i2 := problems.LongestSubstringWithAtmostKDisntinctChar(str, 3)
+	fmt.Println("", i, str[i2:i2+i])
 
 }
