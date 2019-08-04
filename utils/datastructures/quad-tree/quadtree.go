@@ -1,10 +1,6 @@
 package quadtree
 
-type quadtreeInterface interface {
-	RangeQuery(r1,c1,r2,c2 int) int
-	PointUpdate(r,c,val int)
-	BuildQuadTree() []int
-}
+
 
 
 type quadTree struct {

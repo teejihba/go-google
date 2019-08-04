@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
+	"go-google/utils/datastructures/disjointset"
+	quadtree "go-google/utils/datastructures/quad-tree"
 	. "go-google/utils/datastructures/tree"
-	quadtree "go-google/utils/quad-tree"
 )
 type TestClass struct {
 	val int
@@ -56,5 +57,20 @@ func main(){
 	fmt.Println("Val == ",  val)
 	tree.PointUpdate(0,0, 7)
 	fmt.Println("New tree = ", tree.Tree)
+
+	MySet := disjointset.DisjointSet{}
+	MySet.MakeSet(6)
+	fmt.Println(MySet)
+
+	MySet.Union(3,5)
+	fmt.Println(MySet)
+	MySet.Union(1,2)
+	fmt.Println(MySet)
+	MySet.Union(2,3)
+	fmt.Println(MySet)
+
+	fmt.Println("1 = %T 5 = ? 3 = ?",MySet.Find(1),MySet.Find(5),MySet.Find(3))
+
+
 
 }
