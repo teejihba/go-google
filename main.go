@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	. "go-google/utils/datastructures/tree"
+	"go-google/utils/mathsUtil"
 	"reflect"
 )
 type TestClass struct {
@@ -16,9 +17,16 @@ func (t TestClass) InitNode() *BSTNode {
 
 func main(){
 	val := TestClass{5}
-	bst := InitEmptyBST(reflect.TypeOf(val), func(v1, v2 BSTNodeInterface) bool {
+	cmp := func(v1, v2 BSTNodeInterface) bool {
 		return v1.(TestClass).val > v2.(TestClass).val
-	})
+	}
+	diff := func(v1,v2 BSTNodeInterface) int {
+		i := v1.(TestClass).val
+		j := v2.(TestClass).val
+		diff := i - j
+		return mathsUtil.AbsoluteVal(diff)
+	}
+	bst := InitEmptyBST(reflect.TypeOf(val), cmp, diff)
 	bst.InsertNode(TestClass{5}.InitNode())
 	bst.InsertNode(TestClass{4}.InitNode())
 	node2 := TestClass{2}.InitNode()
@@ -44,21 +52,30 @@ func main(){
 	//fmt.Println(bst.InOrderSuccessor(bst.Root, node44))
 	//fmt.Println(bst.InOrderSuccessor(bst.Root, node99))
 
-	successors := bst.KInOrderSuccessors(bst.Root, node2, 12)
+	successors := bst.KInOrderSuccessors(bst.Root, node9, 4)
 	for i:= range successors{
 		fmt.Println("----", *successors[i])
 	}
 
+	predecessors := bst.KInOrderPredecessors(bst.Root, node9, 4)
+	for i:= range predecessors{
+		fmt.Println("****", *predecessors[i])
+	}
+
+	kClosest := bst.KClosestNodeOfANode(bst.Root, node9, 4)
+	for i:= range kClosest{
+		fmt.Println("+++++++", *kClosest[i])
+	}
 	//arr := []int{1, 5, 9, 20, 24, 36, 48, 50, 12, 8, 6, 4, 3, 2, 1, 0, -5, -8, -15,-19, -23, -26, -29, -31, -35}
 	//
 	//input := problems.Input{arr, len(arr), 0}
 	//fmt.Println("Answer : ", input.FindIfExists(-7), ", size of arr = ", len(arr))
 	//fmt.Println("GetValue method call count : ", input.GetCount)
-	//i1, e := math.InitBigInt("90")
+	//i1, e := mathsUtil.InitBigInt("90")
 	//if e != nil{
 	//	fmt.Println("err = ", e)
 	//}
-	//i2, _ := math.InitBigInt("4")
+	//i2, _ := mathsUtil.InitBigInt("4")
 	//sum, _ := i1.Add(i2)
 	//fmt.Println(i1,i2,sum)
 	//words := []string{"area","lead","wall","lady","ball"}

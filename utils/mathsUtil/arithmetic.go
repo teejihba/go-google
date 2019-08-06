@@ -1,4 +1,4 @@
-package math
+package mathsUtil
 
 import "math"
 
@@ -29,4 +29,11 @@ func VariadicMax(nums ...int) int {
 		max = Max(max, num)
 	}
 	return max
+}
+
+func AbsoluteVal(x int) int{
+	if x >= 0{
+		return x
+	}
+	return -x
 }
