@@ -19,12 +19,12 @@ type BST struct {
 	NodeCount   int
 	BSTNodeType reflect.Type
 	//should return true if v1 >= v2 else false
-	Compare func(v1, v2 BSTNodeInterface) bool
+	Compare    func(v1, v2 BSTNodeInterface) bool
 	Difference func(v1, v2 BSTNodeInterface) int
 }
 
-func InitEmptyBST(nodeType reflect.Type, comparator func(v1, v2 BSTNodeInterface) bool ,
-	diff func(v1,v2 BSTNodeInterface)int) *BST {
+func InitEmptyBST(nodeType reflect.Type, comparator func(v1, v2 BSTNodeInterface) bool,
+	diff func(v1, v2 BSTNodeInterface) int) *BST {
 	return &BST{BSTNodeType: nodeType, Compare: comparator, Difference: diff}
 }
 
@@ -66,12 +66,11 @@ func (bst *BST) PrintInOrderTraversal(root *BSTNode) {
 		return
 	}
 	bst.PrintInOrderTraversal(root.Left)
-	fmt.Println(root.Data )
+	fmt.Println(root.Data)
 	bst.PrintInOrderTraversal(root.Right)
 }
 
 var inOrderSuccessor *BSTNode
-
 
 //Returns nil if there is no successor
 func (bst *BST) InOrderSuccessor(root, node *BSTNode) *BSTNode {
@@ -106,33 +105,35 @@ func (bst *BST) findMin(root *BSTNode) {
 		temp = temp.Left
 	}
 }
+
 var kSuccessors []*BSTNode
 var kPredecessors []*BSTNode
-func (bst *BST) KInOrderSuccessors(root, node *BSTNode, k int) []*BSTNode{
+
+func (bst *BST) KInOrderSuccessors(root, node *BSTNode, k int) []*BSTNode {
 	kSuccessors = []*BSTNode{}
-	bst.kSuccessorsUtil(root,node,k)
+	bst.kSuccessorsUtil(root, node, k)
 	return kSuccessors
 }
 
-func (bst *BST) KInOrderPredecessors(root, node *BSTNode, k int) []*BSTNode{
+func (bst *BST) KInOrderPredecessors(root, node *BSTNode, k int) []*BSTNode {
 	kPredecessors = []*BSTNode{}
-	bst.kPredecessorsUtil(root,node,k)
+	bst.kPredecessorsUtil(root, node, k)
 	return kPredecessors
 }
 
-func (bst *BST) KClosestNodeOfANode(root , node *BSTNode, k int) []*BSTNode {
+func (bst *BST) KClosestNodeOfANode(root, node *BSTNode, k int) []*BSTNode {
 	kSuccessors := bst.KInOrderSuccessors(root, node, k)
 	kPredecessors := bst.KInOrderPredecessors(root, node, k)
 	var kClosest []*BSTNode
-	i,j := 0,0
+	i, j := 0, 0
 	sLen, pLen := len(kSuccessors), len(kPredecessors)
-	var sVal , pVal *BSTNode
+	var sVal, pVal *BSTNode
 	for {
 		if len(kClosest) == k {
 			return kClosest
 		}
 
-		sVal , pVal = nil, nil
+		sVal, pVal = nil, nil
 		if i < sLen {
 			sVal = kSuccessors[i]
 		}
@@ -146,23 +147,23 @@ func (bst *BST) KClosestNodeOfANode(root , node *BSTNode, k int) []*BSTNode {
 			if sDiff <= pDiff {
 				kClosest = append(kClosest, sVal)
 				i++
-			}else{
-					kClosest = append(kClosest, pVal)
-					j++
+			} else {
+				kClosest = append(kClosest, pVal)
+				j++
 			}
-		}else if sVal != nil {
+		} else if sVal != nil {
 			kClosest = append(kClosest, sVal)
 			i++
 		} else if pVal != nil {
 			kClosest = append(kClosest, pVal)
 			j++
-		}else{
-				return kClosest
+		} else {
+			return kClosest
 		}
 	}
 }
 
-func(bst *BST) kSuccessorsUtil(root, node *BSTNode, k int){
+func (bst *BST) kSuccessorsUtil(root, node *BSTNode, k int) {
 	if root == nil {
 		return
 	}
@@ -179,7 +180,7 @@ func(bst *BST) kSuccessorsUtil(root, node *BSTNode, k int){
 	}
 }
 
-func(bst *BST) kPredecessorsUtil(root, node *BSTNode, k int){
+func (bst *BST) kPredecessorsUtil(root, node *BSTNode, k int) {
 	if root == nil {
 		return
 	}
@@ -196,7 +197,7 @@ func(bst *BST) kPredecessorsUtil(root, node *BSTNode, k int){
 	}
 }
 
-func (bst *BST) inOrderAddNodesInListUtil(node * BSTNode, k int , list *[]*BSTNode){
+func (bst *BST) inOrderAddNodesInListUtil(node *BSTNode, k int, list *[]*BSTNode) {
 	if len(*list) >= k || node == nil {
 		return
 	}
@@ -208,7 +209,7 @@ func (bst *BST) inOrderAddNodesInListUtil(node * BSTNode, k int , list *[]*BSTNo
 	bst.inOrderAddNodesInListUtil(node.Right, k, list)
 }
 
-func (bst *BST) reverseInOrderAddNodesInListUtil(node * BSTNode, k int , list *[]*BSTNode){
+func (bst *BST) reverseInOrderAddNodesInListUtil(node *BSTNode, k int, list *[]*BSTNode) {
 	if len(*list) >= k || node == nil {
 		return
 	}
@@ -219,7 +220,3 @@ func (bst *BST) reverseInOrderAddNodesInListUtil(node * BSTNode, k int , list *[
 	*list = append(*list, node)
 	bst.reverseInOrderAddNodesInListUtil(node.Left, k, list)
 }
-
-
-
-

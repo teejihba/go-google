@@ -11,11 +11,11 @@ func TestFindMaxSizeBSTInBinaryTree(t *testing.T) {
 	root.Left = l
 	r := &problems.TreeNode{15, nil, nil}
 	root.Right = r
-	rr := &problems.TreeNode{20, nil,  nil}
+	rr := &problems.TreeNode{20, nil, nil}
 	r.Right = rr
 	expected := 3
 	ans := problems.FindMaxSizeBSTInBinaryTree(root)
 	if ans != expected {
-		t.Errorf("test case failed, expected = %v, actual = %v",expected, ans  )
+		t.Errorf("test case failed, expected = %v, actual = %v", expected, ans)
 	}
 }

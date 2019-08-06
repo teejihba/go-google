@@ -6,7 +6,7 @@ import (
 )
 
 func TestFindIfExists(t *testing.T) {
-	arr := []int{1, 5, 9, 20, 24, 36, 48, 50, 12, 8, 6, 4, 3, 2, 1, 0, -5, -8, -15,-19, -23, -26, -29, -31, -35}
+	arr := []int{1, 5, 9, 20, 24, 36, 48, 50, 12, 8, 6, 4, 3, 2, 1, 0, -5, -8, -15, -19, -23, -26, -29, -31, -35}
 
 	input := problems.Input{arr, len(arr), 0}
 	ans1 := input.FindIfExists(-19)

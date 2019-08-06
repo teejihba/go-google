@@ -6,6 +6,7 @@ import (
 	"go-google/utils/mathsUtil"
 	"reflect"
 )
+
 type TestClass struct {
 	val int
 }
@@ -14,13 +15,12 @@ func (t TestClass) InitNode() *BSTNode {
 	return &BSTNode{Data: t}
 }
 
-
-func main(){
+func main() {
 	val := TestClass{5}
 	cmp := func(v1, v2 BSTNodeInterface) bool {
 		return v1.(TestClass).val > v2.(TestClass).val
 	}
-	diff := func(v1,v2 BSTNodeInterface) int {
+	diff := func(v1, v2 BSTNodeInterface) int {
 		i := v1.(TestClass).val
 		j := v2.(TestClass).val
 		diff := i - j
@@ -53,17 +53,17 @@ func main(){
 	//fmt.Println(bst.InOrderSuccessor(bst.Root, node99))
 
 	successors := bst.KInOrderSuccessors(bst.Root, node9, 4)
-	for i:= range successors{
+	for i := range successors {
 		fmt.Println("----", *successors[i])
 	}
 
 	predecessors := bst.KInOrderPredecessors(bst.Root, node9, 4)
-	for i:= range predecessors{
+	for i := range predecessors {
 		fmt.Println("****", *predecessors[i])
 	}
 
 	kClosest := bst.KClosestNodeOfANode(bst.Root, node9, 4)
-	for i:= range kClosest{
+	for i := range kClosest {
 		fmt.Println("+++++++", *kClosest[i])
 	}
 	//arr := []int{1, 5, 9, 20, 24, 36, 48, 50, 12, 8, 6, 4, 3, 2, 1, 0, -5, -8, -15,-19, -23, -26, -29, -31, -35}
@@ -108,7 +108,5 @@ func main(){
 	//fmt.Println(MySet)
 	//
 	//fmt.Println("1 = %T 5 = ? 3 = ?",MySet.Find(1),MySet.Find(5),MySet.Find(3))
-
-
 
 }

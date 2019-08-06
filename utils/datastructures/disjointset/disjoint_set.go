@@ -1,16 +1,16 @@
 package disjointset
 
 type DisjointSet struct {
-	Size int
+	Size   int
 	Parent []int
-	Rank []int
+	Rank   []int
 }
 
-func (set *DisjointSet) MakeSet(n int)  {
+func (set *DisjointSet) MakeSet(n int) {
 	set.Size = n
-	set.Parent = make([]int , n)
-	set.Rank = make([]int , n)
-	for i := range set.Parent{
+	set.Parent = make([]int, n)
+	set.Rank = make([]int, n)
+	for i := range set.Parent {
 		set.Parent[i] = i
 		set.Rank[i] = 0
 	}
@@ -25,7 +25,7 @@ func (set *DisjointSet) Find(x int) int {
 }
 
 //Union by Rank
-func (set *DisjointSet) Union(x int , y int) {
+func (set *DisjointSet) Union(x int, y int) {
 	xSet := set.Find(x)
 	ySet := set.Find(y)
 
@@ -38,4 +38,3 @@ func (set *DisjointSet) Union(x int , y int) {
 		set.Rank[xSet]++
 	}
 }
-

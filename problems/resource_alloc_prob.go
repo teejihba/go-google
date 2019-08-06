@@ -7,13 +7,13 @@ import (
 )
 
 type Process struct {
-	Name string
+	Name      string
 	Allocated int
-	Required int
+	Required  int
 }
 
 func (p Process) InitNode() *linkedlist.SinglyLinkedListNode {
-	node := &linkedlist.SinglyLinkedListNode{Data: p, Next:nil}
+	node := &linkedlist.SinglyLinkedListNode{Data: p, Next: nil}
 	return node
 }
 
@@ -21,15 +21,15 @@ func (p Process) GetData() linkedlist.SinglyLinkedListNodeInterface {
 	return p
 }
 
-func FindMaxAvailableResources(n int, processes []string, allocatedArr []int, requiredArr []int, available int, k int ) int{
+func FindMaxAvailableResources(n int, processes []string, allocatedArr []int, requiredArr []int, available int, k int) int {
 	list := sortProcArrayAndInitLinkedList(n, processes, allocatedArr, requiredArr)
 	curr := list.Head
 	var prev *linkedlist.SinglyLinkedListNode = nil
-	for !list.IsListEmpty() &&  k > 0 && curr != nil {
+	for !list.IsListEmpty() && k > 0 && curr != nil {
 		var p = curr.Data.GetData().(Process)
-		if p.Required <= available{
+		if p.Required <= available {
 			available += p.Allocated
-			_ =list.RemoveNode(curr, prev)
+			_ = list.RemoveNode(curr, prev)
 			k--
 			curr = list.Head
 			prev = nil
@@ -38,7 +38,7 @@ func FindMaxAvailableResources(n int, processes []string, allocatedArr []int, re
 			curr = curr.Next
 		}
 	}
-	if curr == nil && k>0 {
+	if curr == nil && k > 0 {
 		return -1
 	} else {
 		return available
@@ -59,11 +59,10 @@ func sortProcArrayAndInitLinkedList(n int, procs []string, alloc []int, reqd []i
 	return list
 }
 
-func initProcArr(n int, procs []string, alloc []int, reqd []int) [] Process {
+func initProcArr(n int, procs []string, alloc []int, reqd []int) []Process {
 	procArr := make([]Process, n)
 	for i := 0; i < n; i++ {
 		procArr[i] = Process{procs[i], alloc[i], reqd[i]}
 	}
 	return procArr
 }
-

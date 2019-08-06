@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"reflect"
 )
+
 /*
 To create a linked list of generic type , create a struct that implements SinglyLinkedListNodeInterface
 Checkout example in singly_linked_list.go
@@ -15,7 +16,7 @@ type SinglyLinkedListNodeInterface interface {
 	GetData() SinglyLinkedListNodeInterface
 }
 
-type SinglyLinkedListNode struct{
+type SinglyLinkedListNode struct {
 	Data SinglyLinkedListNodeInterface
 	Next *SinglyLinkedListNode
 }
@@ -44,9 +45,8 @@ func (list *SinglyLinkedList) InsertAtEnd(node *SinglyLinkedListNode) error {
 	return nil
 }
 
-
 func (list *SinglyLinkedList) InsertAtBeginning(node *SinglyLinkedListNode) error {
-	if list.LinkedListNodeType.String() != reflect.TypeOf(node.Data).String(){
+	if list.LinkedListNodeType.String() != reflect.TypeOf(node.Data).String() {
 		return errors.New("type mismatch")
 	}
 	if list == nil {
@@ -64,7 +64,7 @@ func (list *SinglyLinkedList) InsertAtBeginning(node *SinglyLinkedListNode) erro
 }
 
 func (list *SinglyLinkedList) RemoveNode(node *SinglyLinkedListNode, prevNode *SinglyLinkedListNode) error {
-	if list.LinkedListNodeType.String() != reflect.TypeOf(node.Data).String(){
+	if list.LinkedListNodeType.String() != reflect.TypeOf(node.Data).String() {
 		return errors.New("type mismatch")
 	}
 	if node == nil {
@@ -87,13 +87,13 @@ func (list *SinglyLinkedList) RemoveNode(node *SinglyLinkedListNode, prevNode *S
 	return nil
 }
 
-func (list *SinglyLinkedList) PrintList() error{
+func (list *SinglyLinkedList) PrintList() error {
 	if list == nil {
 		return errors.New("cannot print nil list")
 	}
 	head := list.Head
 	for head != nil {
-		fmt.Println ("val = ", head.Data)
+		fmt.Println("val = ", head.Data)
 		head = head.Next
 	}
 	return nil
@@ -103,10 +103,7 @@ func (list *SinglyLinkedList) IsListEmpty() bool {
 	return list.Head == nil && list.Tail == nil
 }
 
-
 func InitSinglyLinkedList(dataType reflect.Type) *SinglyLinkedList {
 	linkedList := SinglyLinkedList{nil, nil, dataType}
 	return &linkedList
 }
-
-
