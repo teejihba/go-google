@@ -31,7 +31,8 @@ func main() {
 	bst.InsertNode(TestClass{4}.InitNode())
 	node2 := TestClass{2}.InitNode()
 	bst.InsertNode(node2)
-	bst.InsertNode(TestClass{7}.InitNode())
+	node7 := TestClass{7}.InitNode()
+	bst.InsertNode(node7)
 	node9 := TestClass{9}.InitNode()
 	bst.InsertNode(node9)
 	node19 := TestClass{19}.InitNode()
@@ -65,6 +66,11 @@ func main() {
 	kClosest := bst.KClosestNodeOfANode(bst.Root, node9, 4)
 	for i := range kClosest {
 		fmt.Println("+++++++", *kClosest[i])
+	}
+
+	nodesAtK := bst.NodesAtKDistance(bst.Root, node44, 2)
+	for i:= range nodesAtK{
+		fmt.Println("$$$$$", *nodesAtK[i])
 	}
 	//arr := []int{1, 5, 9, 20, 24, 36, 48, 50, 12, 8, 6, 4, 3, 2, 1, 0, -5, -8, -15,-19, -23, -26, -29, -31, -35}
 	//
