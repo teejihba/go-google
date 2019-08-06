@@ -2,9 +2,8 @@ package main
 
 import (
 	"fmt"
-	"go-google/utils/datastructures/disjointset"
-	quadtree "go-google/utils/datastructures/quad-tree"
 	. "go-google/utils/datastructures/tree"
+	"reflect"
 )
 type TestClass struct {
 	val int
@@ -16,18 +15,40 @@ func (t TestClass) InitNode() *BSTNode {
 
 
 func main(){
-	//val := TestClass{5}
-	//bst := InitEmptyBST(reflect.TypeOf(val), func(v1, v2 BSTNodeInterface) bool {
-	//	return v1.(TestClass).val > v2.(TestClass).val
-	//})
-	//bst.InsertNode(TestClass{5}.InitNode())
-	//bst.InsertNode(TestClass{4}.InitNode())
-	//bst.InsertNode(TestClass{2}.InitNode())
-	//bst.InsertNode(TestClass{7}.InitNode())
-	//bst.InsertNode(TestClass{9}.InitNode())
-	//fmt.Println("==============")
-	//bst.PrintInOrderTraversal(bst.Root)
-	//
+	val := TestClass{5}
+	bst := InitEmptyBST(reflect.TypeOf(val), func(v1, v2 BSTNodeInterface) bool {
+		return v1.(TestClass).val > v2.(TestClass).val
+	})
+	bst.InsertNode(TestClass{5}.InitNode())
+	bst.InsertNode(TestClass{4}.InitNode())
+	node2 := TestClass{2}.InitNode()
+	bst.InsertNode(node2)
+	bst.InsertNode(TestClass{7}.InitNode())
+	node9 := TestClass{9}.InitNode()
+	bst.InsertNode(node9)
+	node19 := TestClass{19}.InitNode()
+	bst.InsertNode(node19)
+	bst.InsertNode(TestClass{13}.InitNode())
+	bst.InsertNode(TestClass{8}.InitNode())
+	node99 := TestClass{99}.InitNode()
+	bst.InsertNode(node99)
+	bst.InsertNode(TestClass{1}.InitNode())
+	node44 := TestClass{44}.InitNode()
+	bst.InsertNode(node44)
+	bst.PrintInOrderTraversal(bst.Root)
+	fmt.Println("==============")
+
+	//fmt.Println(bst.InOrderSuccessor(bst.Root, node9))
+	//fmt.Println(bst.InOrderSuccessor(bst.Root, node19))
+	//fmt.Println(bst.InOrderSuccessor(bst.Root, node2))
+	//fmt.Println(bst.InOrderSuccessor(bst.Root, node44))
+	//fmt.Println(bst.InOrderSuccessor(bst.Root, node99))
+
+	successors := bst.KInOrderSuccessors(bst.Root, node2, 12)
+	for i:= range successors{
+		fmt.Println("----", *successors[i])
+	}
+
 	//arr := []int{1, 5, 9, 20, 24, 36, 48, 50, 12, 8, 6, 4, 3, 2, 1, 0, -5, -8, -15,-19, -23, -26, -29, -31, -35}
 	//
 	//input := problems.Input{arr, len(arr), 0}
@@ -46,30 +67,30 @@ func main(){
 	//i, i2 := problems.LongestSubstringWithAtmostKDisntinctChar(str, 3)
 	//fmt.Println("", i, str[i2:i2+i])
 	//[]int{9,10,11,12},[]int{13,14,15,16}
-	grid := [][]int{{1, 2, 3, 4}, {5, 6, 7, 8},{9,10,11,12}}
-	tree := quadtree.InitQuadTree(grid, 3, 4)
-	fmt.Println("Tree == ",  tree.Tree)
-
-	val  := tree.RangeQuery(0,1,1,2)
-	fmt.Println("Val == ",  val)
-
-	val  = tree.RangeQuery(0,1,2,3)
-	fmt.Println("Val == ",  val)
-	tree.PointUpdate(0,0, 7)
-	fmt.Println("New tree = ", tree.Tree)
-
-	MySet := disjointset.DisjointSet{}
-	MySet.MakeSet(6)
-	fmt.Println(MySet)
-
-	MySet.Union(3,5)
-	fmt.Println(MySet)
-	MySet.Union(1,2)
-	fmt.Println(MySet)
-	MySet.Union(2,3)
-	fmt.Println(MySet)
-
-	fmt.Println("1 = %T 5 = ? 3 = ?",MySet.Find(1),MySet.Find(5),MySet.Find(3))
+	//grid := [][]int{{1, 2, 3, 4}, {5, 6, 7, 8},{9,10,11,12}}
+	//tree := quadtree.InitQuadTree(grid, 3, 4)
+	//fmt.Println("Tree == ",  tree.Tree)
+	//
+	//val  := tree.RangeQuery(0,1,1,2)
+	//fmt.Println("Val == ",  val)
+	//
+	//val  = tree.RangeQuery(0,1,2,3)
+	//fmt.Println("Val == ",  val)
+	//tree.PointUpdate(0,0, 7)
+	//fmt.Println("New tree = ", tree.Tree)
+	//
+	//MySet := disjointset.DisjointSet{}
+	//MySet.MakeSet(6)
+	//fmt.Println(MySet)
+	//
+	//MySet.Union(3,5)
+	//fmt.Println(MySet)
+	//MySet.Union(1,2)
+	//fmt.Println(MySet)
+	//MySet.Union(2,3)
+	//fmt.Println(MySet)
+	//
+	//fmt.Println("1 = %T 5 = ? 3 = ?",MySet.Find(1),MySet.Find(5),MySet.Find(3))
 
 
 
