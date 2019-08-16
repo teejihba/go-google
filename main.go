@@ -3,17 +3,16 @@ package main
 import (
 	"fmt"
 	"go-google/problems"
-	. "go-google/utils/datastructures/tree"
 )
 
-type TestClass struct {
-	val int
-}
-
-func (t TestClass) InitNode() *BSTNode {
-	return &BSTNode{Data: t}
-}
-
+//type TestClass struct {
+//	val int
+//}
+//
+//func (t TestClass) InitNode() *BSTNode {
+//	return &BSTNode{Data: t}
+//}
+var Exported string
 func main() {
 	//val := TestClass{5}
 	//cmp := func(v1, v2 BSTNodeInterface) bool {
@@ -114,8 +113,8 @@ func main() {
 	//
 	//fmt.Println("1 = %T 5 = ? 3 = ?",MySet.Find(1),MySet.Find(5),MySet.Find(3))
 
-	yes, st, end := problems.KmpSubstrSearch("acaacabac","acabac")
-	fmt.Println(yes, st, end)
+	//yes, st, end := problems.KmpSubstrSearch("acaacabac","acabac")
+	//fmt.Println(yes, st, end)
 	////arr := []int{4,5,9,10,15,17,19,34,98}
 	//var arr []TestClass
 	//classes := []TestClass{{34}, {15}, {10}, {9}, {5}, {4}}
@@ -132,4 +131,18 @@ func main() {
 	//fmt.Println(arr)
 	//fmt.Println("indesx = ", ind)
 	//fmt.Println(strings.HasPrefix())
+	//problems.MaxCoinsForBurstingBalloons([]int{3, 1, 5, 8})
+	//fmt.Println("Using var = ", Exported)
+
+	fmt.Println(problems.LongestPalindrome("abcdbbfcba"))
+
+}
+
+func Sum( nums []int) int{
+	var test  = 0
+	for i:= range nums{
+		nums = append(nums, i)
+	}
+	return test
+
 }
