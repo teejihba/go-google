@@ -134,9 +134,16 @@ func main() {
 	//problems.MaxCoinsForBurstingBalloons([]int{3, 1, 5, 8})
 	//fmt.Println("Using var = ", Exported)
 // cabababcbc
-	fmt.Println(problems.MinCutPalindromePartitioning("cabababcbc"))
+	//fmt.Println(problems.MinCutPalindromePartitioning("cabababcbc"))
 
+	head := problems.Node{4, nil}
+	head.Next = &problems.Node{5,nil}
+	head.Next.Next = &problems.Node{5,nil}
+	head.Next.Next.Next = &problems.Node{4, nil}
+	fmt.Println(problems.IsLinkedListPalindrome(&head))
 }
+
+
 
 func Sum( nums []int) int{
 	var test  = 0
