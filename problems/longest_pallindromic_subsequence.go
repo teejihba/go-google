@@ -1,13 +1,16 @@
 package problems
 
-import "go-google/utils/mathsUtil"
+import (
+	"go-google/utils/goutils"
+	"go-google/utils/mathsUtil"
+)
 
 func LongestPalindromicSubsequence(str string) int {
 	size := len(str)
 	if size==0||size==1{
 		return size
 	}
-	table := *Init2DIntSlice(size,size)
+	table := *goutils.Init2DIntSlice(size,size)
 	for l:= 0; l< size ; l++ {
 		for i:= 0; i< size -l; i++{
 			j:= i+l
@@ -24,12 +27,4 @@ func LongestPalindromicSubsequence(str string) int {
 		}
 	}
 	return table[0][size-1]
-}
-
-func Init2DIntSlice(row, col int) *[][]int{
-	a := make([][]int,row )
-	for i := range a {
-		a[i] = make([]int, col)
-	}
-	return &a
 }

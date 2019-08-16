@@ -133,8 +133,8 @@ func main() {
 	//fmt.Println(strings.HasPrefix())
 	//problems.MaxCoinsForBurstingBalloons([]int{3, 1, 5, 8})
 	//fmt.Println("Using var = ", Exported)
-
-	fmt.Println(problems.LongestPalindromicSubsequence("hdjasjas"))
+// cabababcbc
+	fmt.Println(problems.MinCutPalindromePartitioning("cabababcbc"))
 
 }
 
