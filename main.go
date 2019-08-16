@@ -134,7 +134,7 @@ func main() {
 	//problems.MaxCoinsForBurstingBalloons([]int{3, 1, 5, 8})
 	//fmt.Println("Using var = ", Exported)
 
-	fmt.Println(problems.LongestPalindrome("abcdbbfcba"))
+	fmt.Println(problems.LongestPalindromicSubsequence("hdjasjas"))
 
 }
 
