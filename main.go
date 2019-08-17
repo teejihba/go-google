@@ -1,10 +1,11 @@
 package main
 
 import (
-	"fmt"
-	"go-google/problems"
-)
+ "fmt"
+ "go-google/problems"
 
+ //"github.com/golang-collections/collections/stack"
+)
 //type TestClass struct {
 //	val int
 //}
@@ -136,20 +137,24 @@ func main() {
 // cabababcbc
 	//fmt.Println(problems.MinCutPalindromePartitioning("cabababcbc"))
 
-	head := problems.Node{4, nil}
-	head.Next = &problems.Node{5,nil}
-	head.Next.Next = &problems.Node{5,nil}
-	head.Next.Next.Next = &problems.Node{4, nil}
-	fmt.Println(problems.IsLinkedListPalindrome(&head))
+	//head := problems.Node{4, nil}
+	//head.Next = &problems.Node{5,nil}
+	//head.Next.Next = &problems.Node{5,nil}
+	//head.Next.Next.Next = &problems.Node{4, nil}
+	//fmt.Println(problems.IsLinkedListPalindrome(&head))
+	//fmt.Println("aaya re ", problems.RemoveKDigits("10200", 1))
+	//table := *goutils.Init2DStringSlice(3,3)
+	//fmt.Println(len(table[0][0]))
+	fmt.Println(problems.SubarrayWithKDistinctKDistinct([]int{1,2,1,2,3}, 2))
 }
 
 
 
-func Sum( nums []int) int{
-	var test  = 0
-	for i:= range nums{
-		nums = append(nums, i)
-	}
-	return test
-
-}
+//func Sum( nums []int) int{
+//	var test  = 0
+//	for i:= range nums{
+//		nums = append(nums, i)
+//	}
+//	return test
+//
+//}
