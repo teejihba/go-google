@@ -9,7 +9,6 @@ import (
 //type TestClass struct {
 //	val int
 //}
-//
 //func (t TestClass) InitNode() *BSTNode {
 //	return &BSTNode{Data: t}
 //}
